@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Access Management System</title>
+  <title>AI Fitness Trainer</title>
 
     {% load staticfiles %}
   <!-- Custom fonts for this template-->
@@ -36,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Forth Bliss Inc.</sup></div>
+        <div class="sidebar-brand-text mx-3">AI Fitness Trainer.</sup></div>
       </a>
 
       <!-- Divider -->
@@ -44,7 +44,11 @@
 
       <!-- Nav Item - Dashboard -->
       
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                      <i class="fas fa-fw fa-tachometer-alt"></i>
+                      <span>Home</span></a>
+                  </li>
       
                 <li class="nav-item">
                     <a class="nav-link" href="/home">
@@ -190,7 +194,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Name</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.get_username  }} </span>
                 <img class="img-profile rounded-circle" src="{% static '/img/avatar.png' %}">
               </a>
               <!-- Dropdown - User Information -->
