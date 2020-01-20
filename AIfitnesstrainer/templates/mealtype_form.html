@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        
+        <div class="col-md-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-header">Create Mealtype</div>
+
+                <div class="card-body">
+                   {% if messages %}
+                    <ul class="messages">
+                        {% for msg in messages %}
+                        <li>
+                            <div class="alert alert-{{msg.level_tag}}" role="alert">
+                            {{msg.message}}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <form method="POST" >
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>                      
+                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+{% endblock %}

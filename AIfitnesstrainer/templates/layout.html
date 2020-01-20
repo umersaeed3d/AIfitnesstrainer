@@ -56,6 +56,8 @@
                       <span>Dashboard</span></a>
                   </li>
 
+        {% if user.is_superuser %}
+        
 
                    <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -65,8 +67,8 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                       <div class="bg-white py-2 collapse-inner rounded">
                         
-                        <a class="collapse-item" href="/creategoal">Create Goal</a>
-                        <a class="collapse-item" href="/goallist">Manage Goal</a>
+                        <a class="collapse-item" href="/goal">Create Goal</a>
+                        <a class="collapse-item" href="/goal/list">Manage Goal</a>
                       </div>
                     </div>
                   </li>
@@ -81,8 +83,8 @@
                     <div id="collapseT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                       <div class="bg-white py-2 collapse-inner rounded">
 
-                        <a class="collapse-item" href="/createmealtype">Create Meal type</a>
-                        <a class="collapse-item" href="/mealtypelist">Manage Meal Type</a>
+                        <a class="collapse-item" href="/mealtype">Create Meal type</a>
+                        <a class="collapse-item" href="/mealtype/list">Manage Meal Type</a>
                       </div>
                     </div>
                   </li>
@@ -94,8 +96,8 @@
                     <div id="collapseC" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                       <div class="bg-white py-2 collapse-inner rounded">
 
-                        <a class="collapse-item" href="/createmeals">Create Meals</a>
-                        <a class="collapse-item" href="/mealslist">Manage Meals</a>
+                        <a class="collapse-item" href="/meals">Create Meals</a>
+                        <a class="collapse-item" href="/meals/list">Manage Meals</a>
 
                       </div>
                     </div>
@@ -113,8 +115,22 @@
                     <div id="collapsecurrency" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                       <div class="bg-white py-2 collapse-inner rounded">
                         
-                        <a class="collapse-item" href="/createsupplements">Create Supplements</a>
-                        <a class="collapse-item" href="/supplementslist">Manage Supplements</a>
+                        <a class="collapse-item" href="/supplements">Create Supplements</a>
+                        <a class="collapse-item" href="/supplements/list">Manage Supplements</a>
+                      </div>
+                    </div>
+                  </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsehome" aria-expanded="true" aria-controls="collapseTwo">
+                      <i class="fas fa-fw fa-cog"></i>
+                      <span>Home Workout</span>
+                    </a>
+                    <div id="collapsehome" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                      <div class="bg-white py-2 collapse-inner rounded">
+
+                        <a class="collapse-item" href="/home_workout">Create Home_workout</a>
+                        <a class="collapse-item" href="/home_workout/list">Manage Home_workout</a>
                       </div>
                     </div>
                   </li>
@@ -127,7 +143,7 @@
                       <span>Orders</span></a>
                   </li>
 
-
+         {% endif %}
                   
 
 
