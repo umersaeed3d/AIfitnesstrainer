@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        
+        <div class="col-md-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-header">Diet plan</div>
+
+                <div class="card-body">
+                     {% if messages %}
+                    <ul class="messages">
+                        {% for msg in messages %}
+                        <li>
+                            <div class="alert alert-{{msg.level_tag}}" role="alert">
+                            {{msg.message}}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="dt_colVis_buttons"></div>
+            <table id="datatable" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+
+
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Calories</th>
+                    <th>Daytime</th>
+
+                    
+                </tr>
+                </thead>
+
+               <tbody>
+
+                  {% for f in table %}
+                    <tr>
+                        {% for foo in f %}
+                            <td>{{ foo }}</td>
+                        {% endfor %}
+
+
+
+
+
+                     </tr>
+
+                  {% endfor %}
+
+
+
+
+               </tbody>
+            </table>
+
+                    <br>
+                    <br>
+                <h2>Supplements Guide</h2>
+                 <div class="dt_colVis_buttons"></div>
+            <table id="datatable2" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+
+
+                    <th>Name</th>
+                    <th>Day_time</th>
+
+
+
+
+                </tr>
+                </thead>
+
+               <tbody>
+
+                  {% for f in supplement %}
+                    <tr>
+
+                        {% for j in f %}
+
+
+                             <td>{% if j == '0' %}
+                                BreakFast
+
+
+                            {% elif j == '1' %}
+                                Lunch
+
+                            {% elif j == '2' %}
+                                Pre-Workout
+
+                            {% elif j == '3' %}
+                            Post-Workout
+
+                            {% elif j == '4' %}
+                            Dinner
+                                {% elif j == '5' %}
+                            Intra-Workout
+                                {% else %}
+                                {{ j }}
+                            {% endif %}</td>
+
+                        {% endfor %}
+
+                     </tr>
+
+                  {% endfor %}
+
+
+
+
+               </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ $(document).ready( function () {
+    $('#datatable').DataTable({
+        order: [[3, 'asc']],
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+    $('#datatable2').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
+
+{% endblock %}
+

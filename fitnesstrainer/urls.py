@@ -34,11 +34,14 @@ urlpatterns = [
     url(r'^supplements/update/(?P<value>\d+)/$', views.supplementsupdateform, name='supplementsupdatelist'),
     url(r'^home_workout/delete/(?P<value>\d+)/$', views.home_workoutdelete, name='home_workoutdelete'),
     url(r'^home_workout/update/(?P<value>\d+)/$', views.home_workoutupdateform, name='home_workoutupdatelist'),
+    url(r'^orders/(?P<value>\d+)/$', views.ordersbyid, name='home_workoutupdatelist'),
 
 
     path('',views.index,name='index'),
     path('admin/', admin.site.urls),
     path('home',views.home,name='home'),
+    path('orders',views.orders,name='orders'),
+
 
     path('goal',views.goalform,name='goal'),
     path('goal/list',views.goallist,name='goallist'),
@@ -59,6 +62,9 @@ urlpatterns = [
     path('home_workout', views.home_workoutform, name='home_workout'),
     path('home_workout/list', views.home_workoutlist, name='home_workoutlist'),
     path('home_workout/update', views.home_workoutupdate, name='home_workoutupdate'),
+
+    path('workoutplan',views.generateworkoutplan ,name='workout_plan'),
+    path('dietplan', views.generatedietplan ,name='diet_plan')
 
 
 ]

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        
+        <div class="col-md-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-header">Home Workout Lists</div>
+
+                <div class="card-body">
+                     {% if messages %}
+                    <ul class="messages">
+                        {% for msg in messages %}
+                        <li>
+                            <div class="alert alert-{{msg.level_tag}}" role="alert">
+                            {{msg.message}}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="dt_colVis_buttons"></div>
+            <table id="datatable" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>#</th>
+
+                    <th>Name</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+
+                    
+                </tr>
+                </thead>
+
+               <tbody>
+
+                  {% for f in table %}
+                    <tr>
+                        {% for foo in f %}
+                            <td>{{ foo }}</td>
+                        {% endfor %}
+
+
+
+
+
+                     </tr>
+
+                  {% endfor %}
+
+
+
+
+               </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ $(document).ready( function () {
+    $('#datatable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
+
+{% endblock %}
+

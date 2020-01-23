@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        
+        <div class="col-md-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-header">Orders</div>
+
+                <div class="card-body">
+                     {% if messages %}
+                    <ul class="messages">
+                        {% for msg in messages %}
+                        <li>
+                            <div class="alert alert-{{msg.level_tag}}" role="alert">
+                            {{msg.message}}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="dt_colVis_buttons"></div>
+            <table id="datatable" class="table table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Plan</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Height</th>
+                    <th>Manage</th>
+                    
+                </tr>
+                </thead>
+
+               <tbody>
+                  {% for f in table %}
+                    <tr>
+                         <td>{{f.id}}</td>
+                         <td>{% if f.type == '0' %}
+                         Home Workout Plan
+                         {% endif %}
+                         {% if f.type == '1' %}
+                         Gym Workout Plan
+                         {% endif %}
+                         {% if f.type == 'Diet_Plan' %}
+                         Diet Plan
+                         {% endif %}</td>
+                        <td>{{ f.age }}</td>
+                        <td>{{ f.weight }}</td>
+                        <td>{{ f.height }}</td>
+
+                        <td><a href="/orders/{{f.id}}">View plan</a><br>
+                          </td>
+
+                     </tr>
+                  {% endfor %}
+
+
+
+
+               </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ $(document).ready( function () {
+    $('#datatable').DataTable();
+} );
+</script>
+
+{% endblock %}
+

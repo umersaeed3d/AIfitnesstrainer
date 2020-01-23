@@ -80,8 +80,8 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li><a href="#home-section" class="nav-link">Home</a></li>
-                <li><a href="/workoutplan" class="nav-link">Workout Plan</a></li>
-                <li><a href="/dietplan" class="nav-link">Diet Plan</a></li>
+                <li><a href="#" class="nav-link" data-toggle="modal" data-target="#workoutplan">Workout Plan</a></li>
+                <li><a href="#" class="nav-link" data-toggle="modal" data-target="#myModal">Diet Plan</a></li>
 
                 <li><a href="{% if user.is_authenticated %}/home{% else %}/login{% endif %}" class="nav-link">{% if user.is_authenticated %} Dashboard {% else %} Login {% endif %}</a></li>
                 <li><a href="/register" class="nav-link">Register</a></li>
@@ -241,6 +241,7 @@
       </div>
       <div class="modal-body">
           <form action="/dietplan" method="post">
+          {% csrf_token %}
               <div class="form-group">
                   <label for="">Age</label>
                   <input type="text" class="form-control age" name="age" required>
@@ -251,7 +252,7 @@
               </div>
               <div class="form-group">
                   <label for="">Height in meters</label>
-                  <input type="number" class="form-control height" name="height" required>
+                  <input type="number" step="0.01" class="form-control height" name="height" required>
               </div>
               <button class="btn btn-primary" type="button" onclick="calculatebmi()">Calculate BMI</button>
               <br>
@@ -271,7 +272,7 @@
               <input type="hidden" value="Diet_Plan" name="type">
                <div class="form-group">
                   <label for="">Diet Preference</label>
-                  <select name="preference" id="preference" required class="form-control">
+                  <select name="meal_type" id="preference" required class="form-control">
                       {% for m in meal_type %}
                           <option value="{{ m.id }}">{{ m.mt_name }}</option>
                       {% endfor %}
@@ -307,33 +308,33 @@
       </div>
       <div class="modal-body">
           <form action="/workoutplan" method="post">
+          {% csrf_token %}
               <div class="form-group">
                   <label for="">Age</label>
                   <input type="text" class="form-control age" name="age">
               </div>
               <div class="form-group">
                   <label for="">Weight in kgs</label>
-                  <input type="text" class="form-control weight" name="weight">
+                  <input type="number" step="0.01" class="form-control weight" name="weight">
               </div>
               <div class="form-group">
-                  <label for="">Height in inches and feet</label>
-                  <input type="text" class="form-control height" name="height">
+                  <label for="">Height in inches and feet (5.4)</label>
+                  <input type="number" step="0.01" class="form-control height" name="height">
               </div>
             <div class="form-group">
                   <label for="">Type</label>
                   <select name="type" id="type" class="form-control">
 
-                      <option value="Home workout">Home Workout</option>
-                      <option value="Gym workout">Gym Workout</option>
+                      <option value="0">Home Workout</option>
+                      <option value="1">Gym Workout</option>
                   </select>
               </div>
               <div class="form-group">
                   <label for="">Goal</label>
                   <select name="goal" id="goal" class="form-control">
 
-                       {% for foo in goal %}
-                          <option value="{{ foo.id }}">{{ foo.g_name }}</option>
-                      {% endfor %}
+                       <option value="0,10">Fatloss</option>
+                      <option value="1,11">Muscle gain</option>
                   </select>
               </div>
                 {% if user.is_authenticated %}

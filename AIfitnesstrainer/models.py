@@ -41,11 +41,10 @@ class Order(models.Model):
     id = models.AutoField(max_length=11,primary_key=True)
     user_id = models.IntegerField(max_length=11)
     type = models.CharField(max_length=255)
-    goal_id = models.ForeignKey(Goal,on_delete=models.CASCADE, null=True)
-    mealtype_id = models.ForeignKey(MealType, on_delete=models.CASCADE, null=True,default=None)
+
     age = models.CharField(max_length=225)
-    height = models.IntegerField(max_length=11)
-    weight = models.IntegerField(max_length=11)
+    height = models.CharField(max_length=11)
+    weight = models.CharField(max_length=11)
     table = models.CharField(max_length=2000)
     supplementtable = models.CharField(max_length=2000)
     class Meta:
